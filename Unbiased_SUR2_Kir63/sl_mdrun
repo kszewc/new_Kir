@@ -1,0 +1,17 @@
+#!/bin/tcsh
+
+
+#SBATCH -J Kir_SUR
+#SBATCH -N 15
+#SBATCH --ntasks-per-node=24
+#SBATCH --cpus-per-task=1
+#SBATCH -A xxxx
+#SBATCH --output="out.out"
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=xxxx
+#SBATCH --time 48:00:00
+
+#module swap PrgEnv-cray PrgEnv-gnu
+module load apps/gromacs/2019.0
+
+srun gmx_mpi mdrun -v -deffnm unb #md.cpt -noappend
