@@ -1,0 +1,12 @@
+#!/bin/tcsh
+#SBATCH -J Gromm
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH -A xxxx
+#SBATCH --output="grompp.out"
+#SBATCH --time 00:05:00
+
+module load apps/gromacs/2019.0
+
+srun gmx_mpi grompp -f step7_production.mdp -o md.tpr -c prod1.gro -n index.ndx -p topol.top
